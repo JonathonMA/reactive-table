@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
+games = CSV.table Rails.root.join("db", "games.csv")
+puts "----> Loading games (#{games.size})"
+games.each_slice(100).with_index do |slice, i|
+  Game.transaction do
+    slice.each do |game|
+      hash = game.to_h.slice(:title, :developer, :publisher, :released_on)
+      Game.create! hash
+    end
+  end
+  puts "      #{i * 100 + slice.size} loaded..."
+end
