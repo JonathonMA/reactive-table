@@ -1,0 +1,15 @@
+<h1>All Games!</h1>
+
+<table class="table table-condensed">
+  <% @games.each_slice(25) do |slice| %>
+  <tbody>
+  <% slice.each do |game| %>
+    <tr>
+      <td><%= game.title %></td>
+      <td><%= game.publisher %></td>
+      <td><%= game.released_on %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  <% end %>
+</table>

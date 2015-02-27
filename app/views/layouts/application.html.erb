@@ -2,13 +2,21 @@
 <html>
 <head>
   <title>ReactiveTable</title>
+  <%# stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Signika+Negative:400,700" rel="stylesheet" type="text/css" />
+  <link href="http://fonts.googleapis.com/css?family=Signika:400,700" rel="stylesheet" type="text/css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
+<div class="container">
 <%= yield %>
+</div>
 
 </body>
 </html>
